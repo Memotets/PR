@@ -12,19 +12,24 @@ package clasificadores;
 class Patron {
     private double vector[];
     private String clase;
-    
+    private String resultante;
     public Patron(int n){
         this.clase= "Desconocido";
+        this.resultante="";
         this.vector=new double[n];
     }
     public Patron(int n, String clase){
         this.clase= clase;
         this.vector=new double[n];
+        this.resultante="";
+
     }
     
     public Patron (Patron aux){
         this.clase = aux.getClase();
         this.vector = aux.getVector();
+        this.resultante="";
+
     } 
     
     public double[] getVector() {
@@ -41,6 +46,14 @@ class Patron {
 
     public void setClase(String clase) {
         this.clase = clase;
+    }
+
+    public String getResultante() {
+        return resultante;
+    }
+
+    public void setResultante(String resultante) {
+        this.resultante = resultante;
     }
     
 
