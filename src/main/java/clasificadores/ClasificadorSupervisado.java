@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author memotets89
  */
-public interface ClasificardorSupervisado {
+public interface ClasificadorSupervisado {
 
     /**
      *

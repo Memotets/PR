@@ -9,26 +9,27 @@ package clasificadores;
  *
  * @author memotets89
  */
-class Patron {
+public class Patron {
     private double vector[];
     private String clase;
     private String resultante;
+    
     public Patron(int n){
         this.clase= "Desconocido";
-        this.resultante="";
+        this.resultante="None";
         this.vector=new double[n];
     }
-    public Patron(int n, String clase){
+    public Patron(double n[], String clase){
         this.clase= clase;
-        this.vector=new double[n];
-        this.resultante="";
+        this.vector=n;
+        this.resultante="None";
 
     }
     
     public Patron (Patron aux){
         this.clase = aux.getClase();
         this.vector = aux.getVector();
-        this.resultante="";
+        this.resultante="None";
 
     } 
     
