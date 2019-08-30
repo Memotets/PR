@@ -25,6 +25,7 @@ public class Main {
         
         Herramientas.leerDatos( new int[]{0,1,0,1,0,1,0,1,0,1,0,1,0});
         
+        
         MinimaDistancia md = new MinimaDistancia();
         md.entrenar(Herramientas.instancias);
         md.clasificar(Herramientas.instancias);
