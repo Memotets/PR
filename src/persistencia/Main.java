@@ -28,9 +28,6 @@ public class Main {
         MinimaDistancia md = new MinimaDistancia();
         md.entrenar(Herramientas.instancias);
         md.clasificar(Herramientas.instancias);
-        
-        
-        
         System.out.println();
         
     }
