@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class MinimaDistancia implements ClasificadorSupervisado{
 
     ArrayList<PatronRepresentativo> representativos;
+    AnalisisResultado analisis;
     
     public MinimaDistancia(){
          this.representativos = new ArrayList();
@@ -65,5 +66,8 @@ public class MinimaDistancia implements ClasificadorSupervisado{
         interfaces.forEach((p) -> {
             this.clasificar(p);
         });
+        this.analisis = new AnalisisResultado(interfaces);
+        this.analisis.sacarConfusion();
+        System.out.println(""+this.analisis.porcentaje());
     }
 }
