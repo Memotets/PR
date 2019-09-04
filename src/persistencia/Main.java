@@ -23,7 +23,7 @@ public class Main {
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) throws IOException{
         
-        Herramientas.leerDatos( new int[]{0,1,0,1,0,1,0,1,0,1,0,1,0});
+        Herramientas.leerDatos();
        
         MinimaDistancia md = new MinimaDistancia();
         md.entrenar(Herramientas.instancias);
