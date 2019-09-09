@@ -5,6 +5,7 @@
  */
 package persistencia;
 
+import Grafica.Manager;
 import clasificadores.Herramientas;
 import clasificadores.MinimaDistancia;
 
@@ -22,13 +23,18 @@ public class Main {
      */
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) throws IOException{
-        
-        Herramientas.leerDatos();
+         
+        int[] arreglo= {1,0,1,0};
+         
+        Herramientas.leerDatos(arreglo);
        
         MinimaDistancia md = new MinimaDistancia();
         md.entrenar(Herramientas.instancias);
         md.clasificar(Herramientas.instancias);
         System.out.println();
+        
+        Manager man = new Manager(Herramientas.instancias);
+        man.ejecutarPrueba(true);
         
     }
 
