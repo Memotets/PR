@@ -5,6 +5,10 @@
  */
 package clasificadores;
 
+import clasificadores.Herramientas.PatronRepresentativo;
+import clasificadores.Herramientas.Patron;
+import clasificadores.Herramientas.AnalisisResultado;
+import clasificadores.Herramientas.Herramientas;
 import java.util.ArrayList;
 /**
  *

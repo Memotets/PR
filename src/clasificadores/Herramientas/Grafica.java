@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Grafica;
+package clasificadores.Herramientas;
 
 import static org.jfree.chart.ChartFactory.createScatterPlot;
 import org.jfree.chart.ChartFrame;

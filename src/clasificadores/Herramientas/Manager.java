@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Grafica;
+package clasificadores.Herramientas;
 
-import clasificadores.Patron;
-import clasificadores.PatronRepresentativo;
 import java.util.ArrayList;
 
 /**

@@ -5,8 +5,10 @@
  */
 package persistencia;
 
-import Grafica.Manager;
-import clasificadores.Herramientas;
+import clasificadores.Herramientas.Manager;
+import clasificadores.Herramientas.AnalisisResultado;
+import clasificadores.Herramientas.Herramientas;
+import clasificadores.Knn;
 import clasificadores.MinimaDistancia;
 
 import java.io.IOException;
@@ -24,18 +26,25 @@ public class Main {
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) throws IOException{
          
-        int[] arreglo= {1,0,1,0};
          
-        Herramientas.leerDatos(arreglo);
+        Herramientas.leerDatos();
        
-        MinimaDistancia md = new MinimaDistancia();
-        md.entrenar(Herramientas.instancias);
-        md.clasificar(Herramientas.instancias);
-        System.out.println();
+//        MinimaDistancia md = new MinimaDistancia();
+//        md.entrenar(Herramientas.instancias);
+//        md.clasificar(Herramientas.instancias);
+//        System.out.println();
+
+        Knn k= new Knn(1);
+        k.entrenar(Herramientas.instancias);
+        k.clasificar(Herramientas.instancias.get(0));
         
         Manager man = new Manager(Herramientas.instancias);
         man.ejecutarPrueba(true);
-        
+        AnalisisResultado AR = new AnalisisResultado(Herramientas.instancias);
+        AR.sacarConfusion();
+        AR.porcentaje();
+        System.out.print(AR.toString());
+        System.out.print("");
     }
 
 

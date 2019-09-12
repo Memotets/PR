@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clasificadores;
+package clasificadores.Herramientas;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -38,13 +39,22 @@ public class AnalisisResultado {
          
          this.matrizConfucion= new int[cont][cont];
          
-         for(int i=0; i<cont;i++){
-            for(int j=0; j<cont;j++){
-                this.matrizConfucion[i][j] = 0;
-            }
-          }
          
     }
+//    
+//    public double[] porcentajes(){
+//        double[] aux= new double[this.cont];
+//        for (int i=0; i<cont;i++){
+//            for(int j =0; j<cont; j++){
+//                if (i==j){
+    
+//            }else{
+//              }
+//        }
+//        aux/=instancias.size();
+//        aux *= 100;
+//        return aux;
+//    }
     
     public double porcentaje(){
         double aux=0;
@@ -77,6 +87,22 @@ public class AnalisisResultado {
             this.matrizConfucion[clas][res]++;
             }           
         }
+
+    @Override
+    public String toString() {
+      String aux ="";
+        for(int [] vector: this.matrizConfucion){
+           aux+="| ";
+            for (int num: vector){
+               aux += num+" | ";
+           }
+           aux += "\n";
+        }
+        return aux;
     }
+
+
+        
+}
     
 

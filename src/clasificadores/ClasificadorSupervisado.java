@@ -5,6 +5,7 @@
  */
 package clasificadores;
 
+import clasificadores.Herramientas.Patron;
 import java.util.ArrayList;
 
 /**
