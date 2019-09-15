@@ -36,7 +36,7 @@ public class Manager {
     }
     
     
-    public void ejecutarPrueba (boolean grafica){
+    public void ejecutarPruebaInstancias (boolean grafica){
        double[][] DatoA = new double[this.series.size()][this.metodos.size()];
        double[][] DatoB = new double[this.series.size()][this.metodos.size()];
         
@@ -56,16 +56,34 @@ public class Manager {
                 
                 DatoA[clas][a] = vector[0];
                 DatoB[clas][a] = vector[1];
-                System.out.println(a);
             }
         
        if(grafica){
-            Grafica g = new Grafica("DatoA", "DatoB", "Prueba basica");
+            Grafica g = new Grafica("Hrz", "Altura", "NotasMusicales");
             for (int x=0; x<this.series.size(); x++){
                 g.agregarSerie(DatoA[x], DatoB[x], this.series.get(x).getClase());
             }
                 g.creaYmuestraGrafica();
        }
-    }
-    
+     }
+       public void ejecutarPruebaRepresentativos (boolean grafica){
+       double[][] DatoA = new double[this.series.size()][this.series.size()];
+       double[][] DatoB = new double[this.series.size()][this.series.size()];
+        
+ 
+            for(int a=0; a<this.series.size() ; a++){          
+                Patron aux = this.series.get(a);
+                double vector[]=aux.getVector();
+                DatoA[a][a] = vector[0];
+                DatoB[a][a] = vector[1];
+            }
+        
+       if(grafica){
+            Grafica g = new Grafica("Hrz", "Altura", "NotasMusicales");
+            for (int clas=0;clas<this.series.size();clas++){
+                g.agregarSerie(DatoA[clas],DatoB[clas], this.series.get(clas).getClase());
+            }
+                g.creaYmuestraGrafica();
+       }
+      }
 }

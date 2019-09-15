@@ -18,7 +18,6 @@ import clasificadores.Herramientas.AnalisisResultado;
 import clasificadores.Herramientas.Herramientas;
 import clasificadores.Herramientas.Patron;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 /**
  * @author memotets89
@@ -32,17 +31,18 @@ public class Knn implements ClasificadorSupervisado{
     
     public Knn(int i){
         this.k=i;
-        this.clases = new ArrayList();
+        this.clases = new ArrayList<>();
         this.mc = null;
     }
     
     @Override
     public void entrenar(ArrayList<Patron> interfaces) {
-        this.Instancias= interfaces;
-        interfaces.stream().filter((p) -> (!this.clases.contains(p.getClase()))).forEachOrdered((p) -> {
+               this.Instancias = (ArrayList<Patron>) interfaces.clone();
+        // generamos un arraylist de las clases involucradas
+        Instancias.stream().filter((p) -> (!this.clases.contains(p.getClase()))).forEachOrdered((p) -> {
             this.clases.add(p.getClase());
         });
-        
+
     }
 
     @Override
@@ -50,13 +50,32 @@ public class Knn implements ClasificadorSupervisado{
         this.Instancias.sort(
                 (a, b) -> new Double(Herramientas.calcularDistanciaEuclidiana(a, aReconocer))
                 .compareTo(Herramientas.calcularDistanciaEuclidiana(b,aReconocer))); 
+        
+        int contador[] = new int[this.clases.size()];
+        // clasificar en base al numero de vecinos
+        for(Patron aux: this.Instancias){
+            int i = this.clases.indexOf(aux.getClase());
+            contador[i]++;
+            if(contador[i]==this.k){
+                // clasificar
+                aReconocer.setResultante(this.clases.get(i));
+                break;
+            }
+        }
     }
 
     @Override
     public void clasificar(ArrayList<Patron> interfaces) {
-        interfaces.forEach((n) -> {
+        interfaces.forEach((Patron n) -> {
             clasificar(n);
+        System.out.print("");    
         });
+       this.mc = new AnalisisResultado(this.Instancias);
+       this.mc.porcentaje();
+       this.mc.sacarConfusion();
+       System.out.println(this.mc.toString());
+        System.out.println("porsentaje: "+this.mc.porcentaje());
+        
     }
-    
+
 }

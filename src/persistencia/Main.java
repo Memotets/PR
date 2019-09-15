@@ -5,9 +5,10 @@
  */
 package persistencia;
 
-import clasificadores.Herramientas.Manager;
-import clasificadores.Herramientas.AnalisisResultado;
+//import clasificadores.Herramientas.Manager;
+
 import clasificadores.Herramientas.Herramientas;
+import clasificadores.Herramientas.Manager;
 import clasificadores.Knn;
 import clasificadores.MinimaDistancia;
 
@@ -28,23 +29,20 @@ public class Main {
          
          
         Herramientas.leerDatos();
-       
-//        MinimaDistancia md = new MinimaDistancia();
-//        md.entrenar(Herramientas.instancias);
-//        md.clasificar(Herramientas.instancias);
-//        System.out.println();
 
-        Knn k= new Knn(1);
+        
+        Knn k= new Knn(2);
         k.entrenar(Herramientas.instancias);
-        k.clasificar(Herramientas.instancias.get(0));
+        k.clasificar(Herramientas.instancias);
+        
+        MinimaDistancia md = new MinimaDistancia();
+        md.entrenar(Herramientas.instancias);
+        md.clasificar(Herramientas.instancias);
+
         
         Manager man = new Manager(Herramientas.instancias);
-        man.ejecutarPrueba(true);
-        AnalisisResultado AR = new AnalisisResultado(Herramientas.instancias);
-        AR.sacarConfusion();
-        AR.porcentaje();
-        System.out.print(AR.toString());
-        System.out.print("");
+        man.ejecutarPruebaInstancias(true);
+        man.ejecutarPruebaRepresentativos(true);
     }
 
 

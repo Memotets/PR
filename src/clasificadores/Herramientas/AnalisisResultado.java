@@ -6,7 +6,7 @@
 package clasificadores.Herramientas;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 /**
  *
@@ -42,19 +42,25 @@ public class AnalisisResultado {
          
     }
 //    
-//    public double[] porcentajes(){
-//        double[] aux= new double[this.cont];
-//        for (int i=0; i<cont;i++){
-//            for(int j =0; j<cont; j++){
-//                if (i==j){
-    
-//            }else{
-//              }
-//        }
-//        aux/=instancias.size();
-//        aux *= 100;
-//        return aux;
-//    }
+    public double[] porcentajes(){
+        double[] aux= new double[this.cont];
+        double[] base= new double[this.cont];
+        int i =0;
+           for (; i<this.cont; i++){
+               for (int j = 0; j<this.cont;j++){
+                   base [i] += this.matrizConfucion[i][j];
+                   if (i==j){
+                       aux[i]=this.matrizConfucion[i][j];
+                   }
+                }
+           }
+           for (int x =0; x<this.cont;x++){
+           aux[x]/= base[x];
+           aux[x]*=100;
+           }
+           return aux;
+    }
+   
     
     public double porcentaje(){
         double aux=0;
@@ -91,16 +97,17 @@ public class AnalisisResultado {
     @Override
     public String toString() {
       String aux ="";
-        for(int [] vector: this.matrizConfucion){
-           aux+="| ";
-            for (int num: vector){
-               aux += num+" | ";
+      double[] por = this.porcentajes();
+      int i=0;
+      for (; i<this.cont; i++){
+           aux+="| "+this.representativos.get(i).getClase()+ " | ";
+            for (int j = 0; j<this.cont;j++){
+               aux += this.matrizConfucion[i][j]+" | ";
            }
-           aux += "\n";
+           aux += "promedio:"+por[i]+"\n";
         }
         return aux;
     }
-
 
         
 }
