@@ -23,6 +23,62 @@ import javax.swing.JOptionPane;
 public class Herramientas {
     
    public static ArrayList<Patron> instancias;
+   
+   public static void leerDatos(int eleccion[], String ruta){
+         instancias = new ArrayList<>();
+         String texto, aux;
+         LinkedList<String> lista = new LinkedList();
+         
+         try {
+          
+            //abrimos el archivo ruta
+            File abre =new File(ruta);
+            //Desktop.getDesktop().open(abre);
+
+            //recorremos el archivo y lo leemos
+            if (abre != null) {
+                FileReader archivos = new FileReader(abre);
+                BufferedReader lee = new BufferedReader(archivos);
+
+                while ((aux = lee.readLine()) != null) {
+                    texto = aux;
+                    lista.add(texto);
+                }
+                lee.close();
+                //System.out.println(lista.size());
+
+                ArrayList<String> lista2 = new ArrayList<>();
+                String clase = "";
+                for (int i = 0; i < lista.size(); i++) {
+                    int j=0;
+                    StringTokenizer st = new StringTokenizer(lista.get(i), ",");
+
+                    while (st.hasMoreTokens()) {
+                        lista2.add(st.nextToken());
+                    }
+                    
+                    double[] vector = new double [obtenerDimension(eleccion)];
+
+                    for (int x = 0; x < eleccion.length; x++) {
+                        if(eleccion[x]==1){
+                            vector[j] = Double.parseDouble(lista2.get(x));
+                            j++;
+                        }
+                    }
+                    clase = lista2.get(lista2.size()-1);
+                    // a la coleccion de patrones se agrega un nuevo patron
+                    instancias.add(new Patron(vector, clase));
+                   // patrones.add();
+                    lista2.clear();
+                }         
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, ex + ""
+                    + "\nNo se ha encontrado el archivo",
+                    "ADVERTENCIA!!!", JOptionPane.WARNING_MESSAGE);            
+        }
+         
+    }
     
    public static void leerDatos(int eleccion[]){
          instancias = new ArrayList<>();

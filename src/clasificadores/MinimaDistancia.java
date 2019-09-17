@@ -73,6 +73,6 @@ public class MinimaDistancia implements ClasificadorSupervisado{
         this.analisis = new AnalisisResultado(interfaces);
         this.analisis.sacarConfusion();
         System.out.println(this.analisis.toString());
-        System.out.println("porsentaje: "+this.analisis.porcentaje()+"\n");
+        System.out.println("porcentaje: "+this.analisis.porcentaje()+"\n");
     }
 }

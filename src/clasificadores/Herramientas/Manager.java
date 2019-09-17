@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author memotets89
  */
 public class Manager {
+    
     private ArrayList<Patron> metodos;
     private ArrayList<PatronRepresentativo> series;
     public Manager(){
@@ -39,6 +40,7 @@ public class Manager {
     public void ejecutarPruebaInstancias (boolean grafica){
        double[][] DatoA = new double[this.series.size()][this.metodos.size()];
        double[][] DatoB = new double[this.series.size()][this.metodos.size()];
+       double[] NumDatos =new double[this.series.size()];
         
             int clas = 0;
             for(int a=0; a<this.metodos.size() ; a++){
@@ -56,12 +58,13 @@ public class Manager {
                 
                 DatoA[clas][a] = vector[0];
                 DatoB[clas][a] = vector[1];
+                NumDatos[clas]++;
             }
         
        if(grafica){
             Grafica g = new Grafica("Hrz", "Altura", "NotasMusicales");
             for (int x=0; x<this.series.size(); x++){
-                g.agregarSerie(DatoA[x], DatoB[x], this.series.get(x).getClase());
+                g.agregarSerie(DatoA[x], DatoB[x], this.series.get(x).getClase()+" "+NumDatos[x]);
             }
                 g.creaYmuestraGrafica();
        }

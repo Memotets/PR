@@ -74,8 +74,7 @@ public class Knn implements ClasificadorSupervisado{
        this.mc.porcentaje();
        this.mc.sacarConfusion();
        System.out.println(this.mc.toString());
-        System.out.println("porsentaje: "+this.mc.porcentaje());
-        
+       System.out.println("porcentaje: "+this.mc.porcentaje()+"\n");    
     }
 
 }
