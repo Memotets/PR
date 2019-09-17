@@ -33,8 +33,9 @@ public class Main {
         int x = Integer.parseInt(dato, 2);
        
         for (int i=1; i<=x;i++){
-            int [] matriz = new int[13];
+            int [] matriz = new int[numBits];
             String aux= Integer.toBinaryString(i);
+            
             for(int j=0;j<aux.length();j++){ 
                 matriz[dato.length()-aux.length()+j] = Integer.parseInt(Character.toString(aux.charAt(j)));  
             }
