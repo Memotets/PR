@@ -75,4 +75,8 @@ public class MinimaDistancia implements ClasificadorSupervisado{
         System.out.println(this.analisis.toString());
         System.out.println("porcentaje: "+this.analisis.porcentaje()+"\n");
     }
+    
+    public double Porcentaje(){
+        return this.analisis.porcentaje();
+    }
 }
