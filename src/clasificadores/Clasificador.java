@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author memotets89
  */
-public interface ClasificadorSupervisado {
+public interface Clasificador {
 
     /**
      *

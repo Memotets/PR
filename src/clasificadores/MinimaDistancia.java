@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author memotets89
  */
 
-public class MinimaDistancia implements ClasificadorSupervisado{
+public class MinimaDistancia implements Clasificador{
 
     ArrayList<PatronRepresentativo> representativos;
     AnalisisResultado analisis;

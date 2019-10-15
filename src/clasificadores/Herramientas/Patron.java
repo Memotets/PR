@@ -60,7 +60,12 @@ public class Patron {
         @Override
     public boolean equals(Object obj) {
        Patron aux = (Patron) obj;
-       return (aux.getClase().equals(getClase()));
+       for(int i=0; i<this.vector.length;i++){
+           if (this.vector[i]!=aux.getVector()[i]){
+               return false;
+           }
+       }
+       return true;
     }
     
 

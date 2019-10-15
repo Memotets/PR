@@ -22,7 +22,7 @@ import java.util.ArrayList;
 /**
  * @author memotets89
  */
-public class Knn implements ClasificadorSupervisado{
+public class Knn implements Clasificador{
     
     ArrayList<String> clases;
     int k;
