@@ -12,6 +12,12 @@ package clasificadores.Herramientas;
 public class PatronRepresentativo extends Patron{
     
     private int contador;
+    
+     public PatronRepresentativo(Patron n, String a) {
+        super(n.getVector(), a);
+        contador=0;
+        acumular(n);
+    }
         
     public PatronRepresentativo(Patron n) {
         super(n.getVector().length);
@@ -40,6 +46,18 @@ public class PatronRepresentativo extends Patron{
         
         return super.equals(obj);
     }
+
+    @Override
+    public String toString() {
+        String aux= "Valores: {";
+        for (double a: this.getVector()){
+            aux+= " "+a+",";
+        }
+        aux += "} ->" + this.getClase();
+        return aux;
+    }
+    
+    
 
     
     

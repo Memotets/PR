@@ -7,12 +7,11 @@ package persistencia;
 
 import clasificadores.CMeans;
 import clasificadores.Herramientas.Herramientas;
-import clasificadores.Herramientas.Manager;
-import clasificadores.Herramientas.MergeSort;
-import clasificadores.Knn;
-import clasificadores.MinimaDistancia;
+import clasificadores.Herramientas.Patron;
+
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -80,10 +79,11 @@ public class Main {
 //        System.out.println(K.toString());
 
 //         
-        Herramientas.leerDatos();
-        CMeans cm = new CMeans(150);
-        cm.entrenar(Herramientas.instancias);
-   
+        Herramientas.leerDatos("/home/memotets89/Escritorio/Work/Tareas/Semestre5/Reconocimiento de patrones/Iris/wop.csv");
+        CMeans cm = new CMeans(3);
+        cm.entrenar(Herramientas.instancias, new int[]{0,99,149});
+        ArrayList<Patron> wop = (ArrayList<Patron>) Herramientas.instancias.clone();
+        cm.clasificar(wop);
     }
 
 }

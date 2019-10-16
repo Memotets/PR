@@ -1,9 +1,10 @@
 package clasificadores;
-
+import clasificadores.Herramientas.Herramientas;
 import clasificadores.Herramientas.Patron;
 import clasificadores.Herramientas.PatronRepresentativo;
 import java.util.ArrayList;
 import java.util.Random;
+
 
 
 public class CMeans implements Clasificador{
@@ -11,10 +12,16 @@ public class CMeans implements Clasificador{
     private PatronRepresentativo[] centroides;
     
     public CMeans(int c) {
-        this.c = c;
+        if(c>15) this.c=15;
+        else this.c = c;
         this.centroides= new PatronRepresentativo[c];
     }
-    
+    public void entrenar(ArrayList<Patron> interfaces, int pos[]){
+        for(int x=0; x<pos.length;x++){
+            this.centroides[x]= new PatronRepresentativo(interfaces.get(pos[x]));
+            this.centroides[x].setClase(""+x);
+        }
+    }
     @Override
     public void entrenar(ArrayList<Patron> interfaces) {
         Random ran = new Random();
@@ -43,13 +50,20 @@ public class CMeans implements Clasificador{
     @Override
     public void clasificar(ArrayList<Patron> patrones) {
        PatronRepresentativo[] nuevos; 
-       do{
-           
+       do{           
            clasificacion(patrones);
            //recalculo centroides
-           
            nuevos = reAjustarCentroides(patrones);
-           
+//            System.out.println("---------------------Nueva iteracion-------------------------");  
+//             System.out.println("Existentes: ");  
+//           for (int i =0; i<this.c;i++){
+//                System.out.println(this.centroides[i].toString());  
+//           }
+//            System.out.println("Nuevos: ");  
+//           for (int i =0; i<this.c;i++){
+//                System.out.println(nuevos[i].toString());  
+//           }
+//            System.out.println("---------------------Fin de la iteracion-------------------------");  
        }while(diferenciaCentroides(nuevos));
     }
 
@@ -62,25 +76,36 @@ public class CMeans implements Clasificador{
     }
 
     private void clasificacion(ArrayList<Patron> patrones) {
-        //wop
+        patrones.forEach((e) -> {
+            double distC = Herramientas.calcularDistanciaEuclidiana(e, this.centroides[0]);
+            e.setClase(this.centroides[0].getClase());
+            for (int i=1; i<this.c;i++){
+                double nDistancia = Herramientas.calcularDistanciaEuclidiana(e, this.centroides[i]);
+                if(distC>nDistancia){
+                    distC=nDistancia;
+                    e.setClase(this.centroides[i].getClase());
+                    
+                }
+            }
+        });
     }
 
     private PatronRepresentativo[] reAjustarCentroides(ArrayList<Patron> patrones) {
        PatronRepresentativo[] aux= new PatronRepresentativo[this.centroides.length];
-       
-       patrones.forEach((wop) -> {
+       patrones.forEach((Patron wop) -> {
            int i = Integer.parseInt(wop.getClase());
            if(aux[i]==null){
                aux[i]= new PatronRepresentativo(wop);
+               aux[i].setClase(""+i);
            }else{
                aux[i].acumular(wop);
            }
-        });
+       });
        
        for(PatronRepresentativo act: aux){
+           System.out.println(act.toString());
             act.actualizar();
         }
-       
        return aux;
     }
 
