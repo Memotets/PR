@@ -1,4 +1,5 @@
-package clasificadores;
+package clustering;
+import clasificadores.Clasificador;
 import clasificadores.Herramientas.Herramientas;
 import clasificadores.Herramientas.Patron;
 import clasificadores.Herramientas.PatronRepresentativo;
@@ -36,10 +37,8 @@ public class CMeans implements Clasificador{
                 this.centroides[x]= new PatronRepresentativo(interfaces.get(pos));
                 this.centroides[x].setClase(""+x);
                 x++;
-                System.out.println(x);
             }
         }
-        System.out.print("");
     }
 
     @Override
@@ -50,20 +49,12 @@ public class CMeans implements Clasificador{
     @Override
     public void clasificar(ArrayList<Patron> patrones) {
        PatronRepresentativo[] nuevos; 
+
        do{           
            clasificacion(patrones);
            //recalculo centroides
            nuevos = reAjustarCentroides(patrones);
-//            System.out.println("---------------------Nueva iteracion-------------------------");  
-//             System.out.println("Existentes: ");  
-//           for (int i =0; i<this.c;i++){
-//                System.out.println(this.centroides[i].toString());  
-//           }
-//            System.out.println("Nuevos: ");  
-//           for (int i =0; i<this.c;i++){
-//                System.out.println(nuevos[i].toString());  
-//           }
-//            System.out.println("---------------------Fin de la iteracion-------------------------");  
+        
        }while(diferenciaCentroides(nuevos));
     }
 
@@ -103,7 +94,6 @@ public class CMeans implements Clasificador{
        });
        
        for(PatronRepresentativo act: aux){
-           System.out.println(act.toString());
             act.actualizar();
         }
        return aux;
@@ -117,6 +107,10 @@ public class CMeans implements Clasificador{
             }
         }
         return false;
+    }
+
+    public PatronRepresentativo[] getCentroides() {
+        return centroides;
     }
     
 }

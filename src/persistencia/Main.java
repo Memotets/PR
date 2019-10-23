@@ -5,7 +5,7 @@
  */
 package persistencia;
 
-import clasificadores.CMeans;
+import clustering.CMeans;
 import clasificadores.Herramientas.Herramientas;
 import clasificadores.Herramientas.Patron;
 

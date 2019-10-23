@@ -21,7 +21,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author memotets89
  */
-public class imageManager {
+public class ImageManager {
     
     public static Image openImage (){
     
@@ -52,7 +52,7 @@ public class imageManager {
             
             return toImage(bi);
         } catch (IOException ex) {
-            Logger.getLogger(imageManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImageManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -79,6 +79,3 @@ public class imageManager {
     }
     
 }
-    
-    
-
