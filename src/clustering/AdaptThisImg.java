@@ -38,13 +38,14 @@ public class AdaptThisImg {
             Pixel pxp = (Pixel)aux;
             String cla = pxp.getClase();
             double vec[] = new double[]{0,100,0};
-             for (PatronRepresentativo wop : ar) {
+            
+            for (PatronRepresentativo wop : ar) {
                  if (cla.equals(wop.getClase())) {
                      vec = wop.getVector();
-                     System.out.println("entre");
                      break;
                  }
              }
+            
             io.setRGB(pxp.getX(),pxp.getY(), new Color((int)vec[0],(int) vec[1],(int) vec[2]).getRGB());
         }
         return ImageManager.toImage(io);

@@ -23,11 +23,11 @@ public class main {
      public static void main(String[] args) throws IOException {
       Image io = ImageManager.openImage();
         JFrameImage mostrario= new JFrameImage(io);
-        ArrayList<Patron> instancias = AdaptThisImg.obtenerImg(io);
+        ArrayList<Patron> wop = AdaptThisImg.obtenerImg(io);
         CMeans cm = new CMeans(10);
-        cm.entrenar(instancias);
-        cm.clasificar(instancias);
-        Image nueva = AdaptThisImg.ImagenClustering(cm.getCentroides(),instancias,new Dimension(io.getWidth(null),io.getHeight(null)));
+        cm.entrenar(wop);
+        cm.clasificar(wop);
+        Image nueva = AdaptThisImg.ImagenClustering(cm.getCentroides(),wop,new Dimension(io.getWidth(null),io.getHeight(null)));
         JFrameImage mostrarad= new JFrameImage(nueva);
      }
      

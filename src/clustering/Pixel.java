@@ -16,6 +16,8 @@ public class Pixel extends Patron{
     
     public Pixel(double[] n, String clase, int x, int y) {
         super(n, clase);
+        this.x=x;
+        this.y=y;
     }
 
     public int getX() {
