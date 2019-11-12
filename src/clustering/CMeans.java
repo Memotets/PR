@@ -13,7 +13,7 @@ public class CMeans implements Clasificador{
     private PatronRepresentativo[] centroides;
     
     public CMeans(int c) {
-        if(c>15) this.c=15;
+        if(c>150) this.c=150;
         else this.c = c;
         this.centroides= new PatronRepresentativo[c];
     }
