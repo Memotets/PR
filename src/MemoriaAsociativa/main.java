@@ -17,13 +17,11 @@ public class main {
     public static void main(String[] args) throws IOException {
     
     ArrayList<Patron> lista = new ArrayList<>();
-    lista.add(new Patron (new double[]{1,0,1,0,1},"1" ));
-    lista.add(new Patron (new double[]{1,1,0,0,1},"2" ));
-    lista.add(new Patron (new double[]{1,0,1,1,0},"3" ));
-    lista.add(new Patron (new double[]{0,1,0,1,1},"1" ));
-    lista.add(new Patron (new double[]{0,0,1,0,1},"3" ));
+    lista.add(new Patron (new double[]{2.1,3.8},"1" ));
+    lista.add(new Patron (new double[]{6.3,3.8},"2" ));
+
     
-    Steinbuch test = new Steinbuch();
+    CAP test = new CAP();
     test.entrenar(lista);
     test.imprimirLernmatrix();
     test.clasificar(lista);
