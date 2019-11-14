@@ -17,14 +17,16 @@ public class main {
     public static void main(String[] args) throws IOException {
     
     ArrayList<Patron> lista = new ArrayList<>();
-    lista.add(new Patron (new double[]{2.1,3.8},"1" ));
-    lista.add(new Patron (new double[]{6.3,3.8},"2" ));
-
+    lista.add(new Patron (new double[]{2.0,3.0,6.0},"1" ));
+    lista.add(new Patron (new double[]{6.0,8.0,10.0},"2" ));
+    ArrayList<Patron> lista2 = new ArrayList<>();
+    lista2.add(new Patron (new double[]{1.9,3.8,5.5},"1" ));
+    lista2.add(new Patron (new double[]{6.4,7.2,9.7},"2" ));
     
     CAP test = new CAP();
     test.entrenar(lista);
     test.imprimirLernmatrix();
-    test.clasificar(lista);
+    test.clasificar(lista2);
     test.imprimirRecuperacion();
         
     }

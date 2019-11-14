@@ -76,6 +76,7 @@ public class CAP implements Clasificador {
         definirParametros(interfaces);
         
         this.instancias.forEach((pat) -> {
+            //Desplazamiento de vector
             for (int i =0;i<pat.getVector().length;i++) pat.getVector()[i]-=this.Media.getVector()[i];
             int i = buscarClaseNumerica(pat);
             
@@ -99,7 +100,7 @@ public class CAP implements Clasificador {
     }
 
     @Override
-    public void clasificar(Patron aReconocer) { //Fase de recuperación
+    public void clasificar(Patron aReconocer) { //Fase de recuperación        
         double aux[] =new double[p]; 
         for (int i =0; i< p; i++ ){
             for (int j=0; j<n;j++)
@@ -125,7 +126,10 @@ public class CAP implements Clasificador {
 
     @Override
     public void clasificar(ArrayList<Patron> interfaces) {
-        interfaces.forEach((pat)->{
+        this.instancias = interfaces;
+        this.instancias.forEach((pat)->{
+            //Desplazamiento de patron
+            for (int i =0;i<pat.getVector().length;i++) pat.getVector()[i]-=this.Media.getVector()[i];
             clasificar(pat);
         });
     }
